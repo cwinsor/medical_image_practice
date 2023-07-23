@@ -1,0 +1,61 @@
+
+following "cars segmentation" example in Segmentation Models PyTorch
+https://github.com/qubvel/segmentation_models.pytorch/blob/master/examples/cars%20segmentation%20(camvid).ipynb
+also see:
+https://github.com/qubvel/segmentation_models.pytorch#encoders
+
+# on WSL:
+cd /mnt/d/code_medimg_practice/medical_image_practice
+
+# CLEAN UP
+
+# make a clean Conda environment
+conda deactivate
+conda remove -n pytorch_medical_image_practice --all -y
+conda create -n pytorch_medical_image_practice python=3.8.10 -y
+conda activate  pytorch_medical_image_practice
+
+# remove any prior MIM installs (if any)
+ 2127  mim list
+ 2128  mim uninstall mmcv -y
+ 2129  mim uninstall mmcv-full -y
+ 2130  mim uninstall mmcv-lite -y
+ 2131  mim uninstall mmengine -y
+ 2132  mim uninstall mmsegmentation -y
+ 2133  mim list
+
+# remove any PIP installs...
+pip list
+pip freeze > temp.txt
+pip uninstall -r temp.txt -y
+pip list
+
+Package    Version
+---------- -------
+pip        23.1.2
+setuptools 67.8.0
+wheel      0.38.4
+
+# install torch torchaudio, torchvision
+# following https://pytorch.org/get-started/locally/
+conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia -y
+
+conda list | grep torch
+# packages in environment at /home/chris/anaconda3/envs/pytorch_medical_image_practice:
+ffmpeg                    4.3                  hf484d3e_0    pytorch
+pytorch                   2.0.1           py3.8_cuda11.7_cudnn8.5.0_0    pytorch
+pytorch-cuda              11.7                 h778d358_5    pytorch
+pytorch-mutex             1.0                        cuda    pytorch
+torchaudio                2.0.2                py38_cu117    pytorch
+torchtriton               2.0.0                      py38    pytorch
+torchvision               0.15.2               py38_cu117    pytorch
+
+testing...
+$ python
+>>> import torch
+>>> torch.cuda.is_available()
+True
+
+conda install -c conda-forge matplotlib -y
+--------------
+pip install -U segmentation-models-pytorch albumentations
