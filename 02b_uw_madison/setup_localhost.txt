@@ -1,11 +1,19 @@
 
 following "cars segmentation" example in Segmentation Models PyTorch
 https://github.com/qubvel/segmentation_models.pytorch/blob/master/examples/cars%20segmentation%20(camvid).ipynb
+
+and adapting for Kaggle UW-Madison GI Tract Image Segmentation
+https://www.kaggle.com/competitions/uw-madison-gi-tract-image-segmentation/overview
+
+It is assumed the GI Tract data has been downloaded and extracted... this is done 
+in git medical_image_uw_madison currently on WSL at
+/mnt/d/../../code_medimg_kag_uw_madison/medical_image_uw_madison/
+
+This is the same setup as 01_cars...
 also see:
-https://github.com/qubvel/segmentation_models.pytorch#encoders
 
 # on WSL:
-cd /mnt/d/code_medimg_practice/medical_image_practice/01_cars
+cd /mnt/d/code_medimg_practice/medical_image_practice/02_uw_madison
 
 # CLEAN UP
 
@@ -59,3 +67,39 @@ True
 conda install -c conda-forge matplotlib -y
 --------------
 pip install -U segmentation-models-pytorch albumentations
+
+-----------------------
+# OK... we hat MMCV but there is some crap we are forced to use - namely
+# mmcv.utils import DictAction
+# to install these packages...
+
+# following https://github.com/open-mmlab/mmcv/releases
+NOTE - if you've dorked with MMCV then make sure to clean up earlier copies...
+# CLEAN UP
+### remove any prior MIM installs...
+ 2127  mim list
+ 2128  mim uninstall mmcv -y
+ 2129  mim uninstall mmcv-full -y
+ 2130  mim uninstall mmcv-lite -y
+ 2131  mim uninstall mmengine -y
+ 2132  mim uninstall mmsegmentation -y
+ 2133  mim list
+
+# targeting MMCV >= 2.0
+pip install -U openmim
+mim install mmcv
+mim install mmcv-lite
+mim list
+
+Package    Version    Source
+---------  ---------  --------------------------------------
+mmcv       2.0.1      https://github.com/open-mmlab/mmcv
+mmcv-lite  2.0.1      https://github.com/open-mmlab/mmcv
+mmengine   0.8.2      https://github.com/open-mmlab/mmengine
+
+//# if targeting MMCV < 2.0 ...
+//pip install -U openmim
+//mim install mmcv-full
+//mim install "mmcv < 2.0.0"
+//mim list
+
