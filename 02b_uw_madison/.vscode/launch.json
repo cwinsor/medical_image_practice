@@ -26,15 +26,26 @@
             ]
         },
         {
-            "name": "train_gi_11",
+            "name": "train_gi_11a_dataloader",
             "type": "python",
             "request": "launch",
-            "program": "train_gi_11.py",
+            "program": "train_gi_11a_dataloader.py",
             "console": "integratedTerminal",
             "justMyCode": false,
             "args": [
                 "--foo", "zappa",
-            ]
+            ],
+        },
+        {
+            "name": "train_gi_11b_everything",
+            "type": "python",
+            "request": "launch",
+            "program": "train_gi_11b_everything.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--foo", "zappa",
+            ],
         },
 
 // want
